@@ -9,5 +9,6 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
   return {
     port: options.port,
     open: true, // с этой опцией будет ватоматически открываться страница с нашим приложением
+    historyApiFallback: true, // без этой опции если мы будем находится не на корневой странице при попытке её обновить будет ошибка notFoundPage. Все опции можно посмотреть на старнице github webpack dev server
   };
 }
