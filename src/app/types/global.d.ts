@@ -7,3 +7,12 @@ declare module '*.scss' {
   const classNames: IClassNames;
   export = classNames;
 }
+
+declare module '*.png';
+declare module '*.gpg';
+declare module '*.gpeg';
+declare module '*.svg' {
+  import React = require('react');
+  const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
+  export default ReactComponent;
+}
