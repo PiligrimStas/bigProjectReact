@@ -17,5 +17,9 @@ export function buildPlugins({ paths }: BuildOptions) {
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css',
     }),
+    // c помощью этого плагина можно прокидывать в приложение глобальные переменные. Мы прокинем переменную __IS_DEV__ в файл i18.ts
+    new webpack.DefinePlugin({
+      __IS_DEV__: JSON.stringify(true),
+    }),
   ];
 }

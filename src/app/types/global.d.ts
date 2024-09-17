@@ -16,3 +16,6 @@ declare module '*.svg' {
   const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
   export default ReactComponent;
 }
+
+// объясняем TS что из себя представляет переменная из webpack.DefinePlugin
+declare const __IS_DEV__: boolean;
