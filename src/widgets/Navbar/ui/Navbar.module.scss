@@ -1,19 +1,22 @@
 .navbar {
-  width: 100%;
-  height: var(--navbar-height);
-  background: var(
-    --inverted-bg-color
-  ); // получается что мы можем использовать в модулях переменные которые хранятся толи в index.scss из src/app/styles то ли из других файлов в той же папке причём мы их нигде явно не импортируем сюда или в компонент где эти файлы будут использованы
-  display: flex;
-  align-items: center;
-  // justify-content: center;
-  padding: 20px;
+    width: 100%;
+    height: var(--navbar-height);
+    background:
+        var(
+            --inverted-bg-color
+        ); // получается что мы можем использовать в модулях переменные которые хранятся толи в index.scss из src/app/styles то ли из других файлов в той же папке причём мы их нигде явно не импортируем сюда или в компонент где эти файлы будут использованы
+
+    display: flex;
+    align-items: center;
+
+    // justify-content: center;
+    padding: 20px;
 }
 
 .links {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .mainLink {
-  margin-right: 15px;
+    margin-right: 15px;
 }
