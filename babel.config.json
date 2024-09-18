@@ -1,0 +1,5 @@
+{
+  "presets": ["@babel/preset-env"],
+  // только для этого плагина и был установлен babel
+  "plugins": ["i18next-extract"]
+}

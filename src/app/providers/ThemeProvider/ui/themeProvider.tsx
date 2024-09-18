@@ -4,17 +4,17 @@ import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/themeContex
 const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 
 const ThemeProvider: FC = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+    const [theme, setTheme] = useState<Theme>(defaultTheme);
 
-  const defaultPops = useMemo(
-    () => ({
-      theme: theme,
-      setTheme: setTheme,
-    }),
-    [theme],
-  );
+    const defaultPops = useMemo(
+        () => ({
+            theme,
+            setTheme,
+        }),
+        [theme],
+    );
 
-  return <ThemeContext.Provider value={defaultPops}>{children}</ThemeContext.Provider>;
+    return <ThemeContext.Provider value={defaultPops}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeProvider;

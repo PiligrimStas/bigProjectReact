@@ -4,11 +4,11 @@ type Mods = Record<string, boolean | string>;
 // готовую библиотеку, но мы используем эту функцию для опытов и тестов
 
 export function classNames(cls: string, mods: Mods = {}, addinional: string[] = []): string {
-  return [
-    cls,
-    ...addinional.filter(Boolean),
-    ...Object.entries(mods)
-      .filter(([key, value]) => Boolean(value))
-      .map(([className]) => className),
-  ].join(' ');
+    return [
+        cls,
+        ...addinional.filter(Boolean),
+        ...Object.entries(mods)
+            .filter(([key, value]) => Boolean(value))
+            .map(([className]) => className),
+    ].join(' ');
 }

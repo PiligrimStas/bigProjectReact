@@ -8,19 +8,20 @@ import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
 
 const App = () => {
-  const { theme } = useTheme();
+    const { theme } = useTheme();
 
-  return (
-    <div className={classNames('app', {}, [theme])}>
-      <Suspense fallback="">
-        <Navbar />
-        <div className="content-page">
-          <Sidebar />
-          <AppRouter />
+    return (
+        <div className={classNames('app', {}, [theme])}>
+            {/* компоненты использующие переводы i18 нужно оборачивать в Sespense поскольку мы будет подргуржать из сервер */}
+            <Suspense fallback="">
+                <Navbar />
+                <div className="content-page">
+                    <Sidebar />
+                    <AppRouter />
+                </div>
+            </Suspense>
         </div>
-      </Suspense>
-    </div>
-  );
+    );
 };
 
 export default App;
