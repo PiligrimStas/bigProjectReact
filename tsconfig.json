@@ -1,23 +1,23 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/", // выходная дирректория нап пофиг потомучто у нас webpack собирает
-    "noImplicitAny": true,
-    "module": "ESNext",
-    "target": "es5", // версиу ecma script в которую код будет компилироваться
-    "jsx": "react-jsx", //позволяет использовать синитаксис jsx
-    "allowJs": true, // позволяет обрабатывать не только ts но и js файлы
-    "moduleResolution": "node",
-    // "baseUrl": ".", // для абсолютного импорта
-    "paths": {
-      "*": ["./src/*"] // узказываем что все абсолютные экпорты и импорты будут идти из папки src
-    },
-    "esModuleInterop": true, // разрешает синтаксис import/exprot es modules
-    "allowSyntheticDefaultImports": true // некоторые библиотеки не поддерживают дефолтный импорт а что бы не импортировать их черех * as нужна эта настройка. Без этого флага не хотел импортироваться htmlWebpackPlugin даже через * as
-  },
-  "ts-node": {
-    // позволяет использовать синтаксис ES Modules в файле webpack.config.ts
     "compilerOptions": {
-      "module": "CommonJS"
+        "outDir": "./dist/", // выходная дирректория нап пофиг потомучто у нас webpack собирает
+        "noImplicitAny": true,
+        "module": "ESNext",
+        "target": "es5", // версиу ecma script в которую код будет компилироваться
+        "jsx": "react-jsx", //позволяет использовать синитаксис jsx
+        "allowJs": true, // позволяет обрабатывать не только ts но и js файлы
+        "moduleResolution": "node",
+        // "baseUrl": ".", // для абсолютного импорта
+        "paths": {
+            "*": ["./src/*"] // узказываем что все абсолютные экпорты и импорты будут идти из папки src
+        },
+        "esModuleInterop": true, // разрешает синтаксис import/exprot es modules
+        "allowSyntheticDefaultImports": true // некоторые библиотеки не поддерживают дефолтный импорт а что бы не импортировать их черех * as нужна эта настройка. Без этого флага не хотел импортироваться htmlWebpackPlugin даже через * as
+    },
+    "ts-node": {
+        // позволяет использовать синтаксис ES Modules в файле webpack.config.ts
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
     }
-  }
 }

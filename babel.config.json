@@ -1,5 +1,7 @@
 {
-  "presets": ["@babel/preset-env"],
-  // только для этого плагина и был установлен babel
-  "plugins": ["i18next-extract"]
+    // babel был установлен что бы мог работать плагин i18nex-extract
+    // в поле presets пакет "@babel/preset-typescript" нужен для того что бы jest мог рабоать с typescript
+    "presets": ["@babel/preset-env", "@babel/preset-typescript"],
+    // только для этого плагина и был установлен babel
+    "plugins": ["i18next-extract"]
 }
