@@ -1,12 +1,13 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
-export function buildPlugins({ paths }: BuildOptions) {
+export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
     return [
-    // этот плагин встраивает содержимое выходного js файла в выходной файл ./public/index.html а переданный в него tepmplate
-    // указывает на то что в этот же выходной файл нужно вставить <div class='root'> из иходного src/index.html
+        // этот плагин встраивает содержимое выходного js файла в выходной файл ./public/index.html а переданный в него tepmplate
+        // указывает на то что в этот же выходной файл нужно вставить <div class='root'> из иходного src/index.html
         new HtmlWebpackPlugin({
             template: paths.html,
         }),
@@ -18,9 +19,13 @@ export function buildPlugins({ paths }: BuildOptions) {
         }),
         // c помощью этого плагина можно прокидывать в приложение глобальные переменные. Мы прокинем переменную __IS_DEV__ в файл i18.ts
         new webpack.DefinePlugin({
-            __IS_DEV__: JSON.stringify(true),
+            __IS_DEV__: JSON.stringify(isDev),
         }),
         // это плагин нужен для того что бы после сохранения изменений в каком либо файле приложения мы могли бы видеть обновления на экране без перезагрузки страницы
         new webpack.HotModuleReplacementPlugin(),
+        // в опциях для BundleAnalyzerPlugin указываем что не нужно его запускать и открывать в отдельной вкладке браузера при каждой сборке приложения
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+        }),
     ];
 }
