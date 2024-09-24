@@ -1,5 +1,6 @@
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { ErrorBoundary } from 'app/providers/ErrorBoundary';
 import App from './app/App';
 // import { BrowserRouter } from 'react-router-dom';
 // ThemeProvider так жи мог быть импортирован из './app/providers/ThemeProvider/ui/ThemeProvider'
@@ -10,9 +11,11 @@ import 'shared/config/i18/i18';
 render(
     <div>
         <BrowserRouter>
-            <ThemeProvider>
-                <App />
-            </ThemeProvider>
+            <ErrorBoundary>
+                <ThemeProvider>
+                    <App />
+                </ThemeProvider>
+            </ErrorBoundary>
         </BrowserRouter>
     </div>,
     document.getElementById('root'),

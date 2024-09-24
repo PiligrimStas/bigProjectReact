@@ -1,3 +1,4 @@
+import { BugButton } from 'app/providers/ErrorBoundary';
 import { useTranslation } from 'react-i18next';
 
 const MainPage = () => {
@@ -9,7 +10,12 @@ const MainPage = () => {
     // и теперь вызов  t('Главная страницы') будет загружать с сервера файл main.json c переводами только для этой страницы
     const { t } = useTranslation('main');
 
-    return <div>{t('Главная страница')}</div>;
+    return (
+        <div>
+            <BugButton />
+            {t('Главная страница')}
+        </div>
+    );
 };
 
 export default MainPage;
