@@ -31,10 +31,21 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'max-len': ['error', { code: 100, ignoreComments: true }],
-        'i18next/no-literal-string': ['warn', { markupOnly: true }], // указываем что нужно подсвечивать не переведённые тексты только в jsx tsx
+        'max-len': ['error', { code: 110, ignoreComments: true }],
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: true }], // указываем что нужно подсвечивать не переведённые тексты только в jsx tsx и не подсвечивать атрибуты
     },
     globals: {
         __IS_DEV__: true,
     },
+
+    // overrides переобределяет правлина ниже мы переобределям правило 'i18next/no-literal-string' для тестовых файлов
+    // теперь eslint не будет ругаться на непереведённый текст в тестовых файлах
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };

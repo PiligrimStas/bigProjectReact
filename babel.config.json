@@ -1,7 +1,12 @@
 {
     // babel был установлен что бы мог работать плагин i18nex-extract
     // в поле presets пакет "@babel/preset-typescript" нужен для того что бы jest мог рабоать с typescript
-    "presets": ["@babel/preset-env", "@babel/preset-typescript"],
+    // @babel/preset-react" нужен чтобы jest мог работать c react component причём без { "runtime": "automatic" } jest будет выбрасывать ошибку
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-typescript",
+        ["@babel/preset-react", { "runtime": "automatic" }]
+    ],
     // только для этого плагина и был установлен babel
     "plugins": ["i18next-extract"]
 }
