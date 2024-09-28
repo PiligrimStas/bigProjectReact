@@ -7,7 +7,7 @@
         "jsx": "react-jsx", //позволяет использовать синитаксис jsx
         "allowJs": true, // позволяет обрабатывать не только ts но и js файлы
         "moduleResolution": "node",
-        // "baseUrl": ".", // для абсолютного импорта
+        "baseUrl": ".", // для абсолютного импорта
         "paths": {
             "*": ["./src/*"] // узказываем что все абсолютные экпорты и импорты будут идти из папки src
         },
@@ -17,8 +17,14 @@
     "ts-node": {
         // позволяет использовать синтаксис ES Modules в файле webpack.config.ts
         "compilerOptions": {
+            "esm": true,
             "module": "CommonJS"
         }
-    }
-    // "include": ["./config/jest/setupTests.ts"]
+    },
+    "include": [
+        "./config/jest/setupTests.ts",
+        "./src/**/*.ts",
+        "./src/**/*.tsx",
+        "./config/storybook/webpack.config.ts"
+    ]
 }

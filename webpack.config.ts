@@ -20,7 +20,10 @@ export default (env: BuildEnv) => {
     // с передачей путей через аргументы
 
     const config: webpack.Configuration = buildWebpackConfig({
-        mode, paths, isDev, port: PORT,
+        mode,
+        paths,
+        isDev,
+        port: PORT,
     });
     return config;
 };
