@@ -17,7 +17,7 @@
     "ts-node": {
         // позволяет использовать синтаксис ES Modules в файле webpack.config.ts
         "compilerOptions": {
-            "esm": true,
+            // "esm": true,
             "module": "CommonJS"
         }
     },

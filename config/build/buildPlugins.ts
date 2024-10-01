@@ -5,7 +5,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
-    return [
+    const plugins = [
         // этот плагин встраивает содержимое выходного js файла в выходной файл ./public/index.html а переданный в него tepmplate
         // указывает на то что в этот же выходной файл нужно вставить <div class='root'> из иходного src/index.html
         new HtmlWebpackPlugin({
@@ -21,11 +21,17 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
         }),
-        // это плагин нужен для того что бы после сохранения изменений в каком либо файле приложения мы могли бы видеть обновления на экране без перезагрузки страницы
-        new webpack.HotModuleReplacementPlugin(),
-        // в опциях для BundleAnalyzerPlugin указываем что не нужно его запускать и открывать в отдельной вкладке браузера при каждой сборке приложения
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-        }),
     ];
+
+    if (isDev) {
+        plugins.push(new webpack.HotModuleReplacementPlugin()); // это плагин нужен для того что бы после сохранения изменений в каком либо файле приложения мы могли бы видеть обновления на экране без перезагрузки страницы
+        plugins.push(
+            new BundleAnalyzerPlugin({
+                openAnalyzer: false,
+                // в опциях для BundleAnalyzerPlugin указываем что не нужно его запускать и открывать в отдельной вкладке браузера при каждой сборке приложения
+            }),
+        );
+    }
+
+    return plugins;
 }

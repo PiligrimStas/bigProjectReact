@@ -1,5 +1,6 @@
 node_modules
 /build
 /saved-commits.txt
+/storybook-static
 
 *storybook.log
