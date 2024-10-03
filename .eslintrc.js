@@ -14,7 +14,7 @@ module.exports = {
         sourceType: 'module',
     },
     // i18next это plugin который будет подсвечивать текст к которому не применяется перевод
-    plugins: ['react', '@typescript-eslint', 'i18next'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -36,6 +36,10 @@ module.exports = {
             'error',
             { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] },
         ], // указываем что нужно подсвечивать не переведённые тексты только в jsx tsx и не подсвечивать атрибуты
+        'jsx-a11y/no-static-element-interactions': 'off', // эта опция нужно что бы линтер не ругался на прменение onclick там гед его симантически быть не должно например на теге див
+        'jsx-a11y/click-events-have-key-events': 'off',
+        'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
     },
     globals: {
         __IS_DEV__: true,

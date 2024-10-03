@@ -2,5 +2,7 @@ node_modules
 /build
 /saved-commits.txt
 /storybook-static
+.loki/report.html
+.loki/report.json
 
 *storybook.log
