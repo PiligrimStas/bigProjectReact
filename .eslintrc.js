@@ -31,7 +31,7 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'max-len': ['error', { code: 110, ignoreComments: true }],
+        'max-len': ['error', { code: 115, ignoreComments: true }],
         'i18next/no-literal-string': [
             'error',
             { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] },
