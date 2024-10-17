@@ -12,7 +12,7 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { loginByUserName } from '../../model/services/loginByUserName/loginByUserName';
 import { getLoginUsername } from '../../model/selectors/getLoadingUsername/getLoginUsername';
-import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassoword';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from '../../model/selectors/getLoginisLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError.ts/getLoginError';
 import cls from './LoginForm.module.scss';
