@@ -5,7 +5,6 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { profileReducer } from 'entities/Profile';
-// import { profileReducer } from 'entities/Profile';
 
 const reducers: ReducerList = {
     profile: profileReducer,

@@ -15,15 +15,15 @@ import 'app/styles/index.scss';
 
 render(
     <div>
-        <StoreProvider>
-            <BrowserRouter>
+        <BrowserRouter>
+            <StoreProvider>
                 <ErrorBoundary>
                     <ThemeProvider>
                         <App />
                     </ThemeProvider>
                 </ErrorBoundary>
-            </BrowserRouter>
-        </StoreProvider>
+            </StoreProvider>
+        </BrowserRouter>
     </div>,
     document.getElementById('root'),
 );
