@@ -45,6 +45,7 @@ module.exports = {
         'implicit-arrow-linebreak': 'off',
         // 'function-paren-newline': ['warn', 'multiline'],
         'operator-linebreak': ['error', 'after'],
+        'no-undef': 'off',
     },
     globals: {
         __IS_DEV__: true,

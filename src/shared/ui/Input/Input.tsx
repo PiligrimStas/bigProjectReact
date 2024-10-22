@@ -1,6 +1,4 @@
-import React, {
-    FC, InputHTMLAttributes, memo, useEffect, useRef, useState,
-} from 'react';
+import React, { FC, InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
@@ -30,12 +28,12 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
 
     const [isFocused, setIsFoucused] = useState(false);
     const [caretPosition, setCaretPosition] = useState(0);
-    const ref = useRef<HTMLInputElement>();
+    const ref = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         if (autofocus) {
             setIsFoucused(true);
-            ref.current.focus();
+            ref.current!.focus();
         }
     }, [autofocus]);
 

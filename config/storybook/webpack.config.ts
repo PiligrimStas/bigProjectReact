@@ -1,7 +1,7 @@
 import webpack, { DefinePlugin, RuleSetRule } from 'webpack';
 import path from 'path';
-import { BuildPaths } from '../build/types/config';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
+import { BuildPaths } from '../build/types/config';
 
 // Этот файл был создан для переореления конфирурации по умолчанию для storybook, нам понадобилось
 // его переопределять для того чтобы storybook мог работать с абсолютными путями и css файлами
@@ -20,22 +20,23 @@ export default ({ config }: { config: webpack.Configuration }) => {
     // выкидывал ошибку так как абсолютные импорты не работали для некоторых файлов и сторибук начинал искать
     // эти файлы по пути node__modules/entity что бы исправить эту ошибку нужно было либо прописать относительные
     // пути для импорта этих файлов, либо исправить push на unshift (что и сделано)
-    config.resolve.modules.unshift(paths.src);
+    config.resolve!.modules!.unshift(paths.src);
     config.resolve?.extensions?.push('.ts', '.tsx');
 
     // eslint-disable-next-line no-param-reassign
-    config.module.rules = config.module?.rules?.map((rule: RuleSetRule) => {
+    // @ts-ignore
+    config!.module!.rules = config.module!.rules!.map((rule: RuleSetRule) => {
         if (/svg/.test(rule.test as string)) {
             return { ...rule, exclude: /\.svg$/i };
         }
         return rule;
     });
-    config.module.rules.push({
+    config!.module!.rules.push({
         test: /\.svg$/,
         use: ['@svgr/webpack'],
     });
-    config.module?.rules?.push(buildCssLoader(true));
-    config.plugins.push(
+    config.module!.rules!.push(buildCssLoader(true));
+    config.plugins!.push(
         new DefinePlugin({
             __IS_DEV__: JSON.stringify(true),
             __API__: JSON.stringify(''),

@@ -23,9 +23,9 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: ReducerLinstEntry) => {
+        Object.entries(reducers).forEach(([name, reducer]) => {
             // добавляем редюсер при монтировании
-            store.reducerManager.add(name, reducer);
+            store.reducerManager.add(name as StateSchemaKey, reducer);
             // следующая строка нужно только для отслеживания в редакс девтулс
             dispatch({ type: `@DESTROY ${name} reducer` });
             // удаляем редюсер при размонтировании
@@ -33,9 +33,9 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
 
         return () => {
             if (removeAfterUnmount) {
-                Object.entries(reducers).forEach(([name, reducer]: ReducerLinstEntry) => {
+                Object.entries(reducers).forEach(([name, reducer]) => {
                     // добавляем редюсер при монтировании
-                    store.reducerManager.remove(name);
+                    store.reducerManager.remove(name as StateSchemaKey);
                     // следующая строка нужно только для отслеживания в редакс девтулс
                     dispatch({ type: `@INIT ${name} reducer` });
                     // удаляем редюсер при размонтировании
@@ -45,11 +45,5 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
         // eslint-disable-next-line
     }, []);
 
-    return (
-        <>
-            {' '}
-            {children}
-            ;
-        </>
-    );
+    return <> {children};</>;
 };
