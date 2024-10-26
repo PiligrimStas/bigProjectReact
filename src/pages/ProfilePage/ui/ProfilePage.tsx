@@ -4,9 +4,17 @@ import {
     ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ProfileCard, fetchProfileData, profileReducer } from 'entities/Profile';
+import {
+    ProfileCard,
+    fetchProfileData,
+    getProfileData,
+    getProfileError,
+    getProfileIsLoading,
+    profileReducer,
+} from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const reducers: ReducerList = {
     profile: profileReducer,
@@ -19,6 +27,9 @@ interface ProfilePageProps {
 const Profile = ({ className }: ProfilePageProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
+    const data = useSelector(getProfileData);
+    const isLoading = useSelector(getProfileIsLoading);
+    const error = useSelector(getProfileError);
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -27,7 +38,7 @@ const Profile = ({ className }: ProfilePageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames('', {}, [className])}>
-                <ProfileCard />
+                <ProfileCard data={data} isLoading={isLoading} error={error} />
             </div>
         </DynamicModuleLoader>
     );
