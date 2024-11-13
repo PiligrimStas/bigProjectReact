@@ -10,7 +10,7 @@ export type ReducerList = {
     [name in StateSchemaKey]?: Reducer;
 };
 
-type ReducerLinstEntry = [StateSchemaKey, Reducer];
+// type ReducerLinstEntry = [StateSchemaKey, Reducer];
 
 interface DynamicModuleLoaderProps {
     reducers: ReducerList;
@@ -27,7 +27,7 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
             // добавляем редюсер при монтировании
             store.reducerManager.add(name as StateSchemaKey, reducer);
             // следующая строка нужно только для отслеживания в редакс девтулс
-            dispatch({ type: `@DESTROY ${name} reducer` });
+            dispatch({ type: `@INIT ${name} reducer` });
             // удаляем редюсер при размонтировании
         });
 
@@ -37,7 +37,7 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
                     // добавляем редюсер при монтировании
                     store.reducerManager.remove(name as StateSchemaKey);
                     // следующая строка нужно только для отслеживания в редакс девтулс
-                    dispatch({ type: `@INIT ${name} reducer` });
+                    dispatch({ type: `@DESTROY ${name} reducer` });
                     // удаляем редюсер при размонтировании
                 });
             }
@@ -45,5 +45,5 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
         // eslint-disable-next-line
     }, []);
 
-    return <> {children};</>;
+    return <> {children} </>;
 };

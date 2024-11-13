@@ -8,6 +8,7 @@ declare module '*.scss' {
     export = classNames;
 }
 
+declare module '*.jpg';
 declare module '*.png';
 declare module '*.gpg';
 declare module '*.gpeg';

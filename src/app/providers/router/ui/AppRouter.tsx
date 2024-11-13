@@ -1,26 +1,43 @@
-import { Suspense } from 'react';
+import { getUserAuthData } from 'entities/User';
+import { Suspense, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { routeConfig } from 'shared/config/routeConfig/route.config';
 import { PageLoader } from 'widgets/PageLoader/PageLoader';
 
-const AppRouter = () => (
+const AppRouter = () => {
+    const isAuth = useSelector(getUserAuthData);
+
+    const routes = useMemo(
+        () =>
+            Object.values(routeConfig).filter((route) => {
+                if (route.authOnly && !isAuth) {
+                    return false;
+                }
+                return true;
+            }),
+        [isAuth],
+    );
+
     // suspense работает одникого когда мы оборачиваем все роуты и если будем обрачивать каждый элемент
     // каждого роута
-    <Suspense fallback={<PageLoader />}>
-        <Routes>
-            {Object.values(routeConfig).map(({ path, element }) => (
-                <Route
-                    key={path}
-                    path={path}
-                    element={
-                        // <Suspense fallback={<PageLoader />}>
-                        <div className="page-wraper">{element}</div>
-                        // </Suspense>
-                    }
-                />
-            ))}
-        </Routes>
-    </Suspense>
-);
+    return (
+        <Suspense fallback={<PageLoader />}>
+            <Routes>
+                {routes.map(({ path, element }) => (
+                    <Route
+                        key={path}
+                        path={path}
+                        element={
+                            // <Suspense fallback={<PageLoader />}>
+                            <div className="page-wraper">{element}</div>
+                            // </Suspense>
+                        }
+                    />
+                ))}
+            </Routes>
+        </Suspense>
+    );
+};
 
 export default AppRouter;
