@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { Profile, ProfileSchema } from '../types/profile';
-import { fetchProfileData } from '../services/fetchProfileData.ts/fetchProfileDate';
+import { fetchProfileData } from '../services/fetchProfileData.ts/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const initialState: ProfileSchema = {
@@ -20,6 +19,7 @@ export const userSlice = createSlice({
         },
         cancelEdit: (state) => {
             state.readonly = true;
+            state.validateErrors = undefined;
             state.form = state.data;
         },
         updateProfile: (state, action: PayloadAction<Profile>) => {

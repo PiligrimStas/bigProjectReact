@@ -21,6 +21,7 @@ export default {
     globals: {
         __IS_DEV__: true,
         __API__: '',
+        __PROJECT__: 'jest',
     },
     // The test environment that will be used for testing
     testEnvironment: 'jsdom',

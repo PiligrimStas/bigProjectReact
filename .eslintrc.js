@@ -50,6 +50,7 @@ module.exports = {
     globals: {
         __IS_DEV__: true,
         __API__: true,
+        __PROJECT__: true,
     },
 
     // overrides переобределяет правлина ниже мы переобределям правило 'i18next/no-literal-string' для тестовых файлов
