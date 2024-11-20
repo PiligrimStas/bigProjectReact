@@ -16,5 +16,6 @@
     "Форма авторизации": "Authorization form",
     "Вы ввели неверный логин или пароль": "You've typed a woring username of password",
     "Выйти": "Log out",
-    "Статьи": "Articles"
+    "Статьи": "Articles",
+    "Комментарии отсутвствуют": "There aren't comments"
 }
