@@ -12,6 +12,7 @@ const data = {
     lastName: 'Fuflovich',
     city: 'Bogdad',
     currency: Currency.EUR,
+    id: '1',
 };
 
 describe('updateProfileData.test', () => {
