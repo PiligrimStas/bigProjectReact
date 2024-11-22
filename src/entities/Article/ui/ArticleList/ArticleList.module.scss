@@ -1,0 +1,16 @@
+.big {
+    .card {
+        margin-bottom: 30px;
+    }
+}
+
+.small {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    .card {
+        // margin-right: 30px;
+        // margin-bottom: 30px;
+    }
+}

@@ -46,6 +46,7 @@ module.exports = {
         // 'function-paren-newline': ['warn', 'multiline'],
         'operator-linebreak': ['error', 'after'],
         'no-undef': 'off',
+        'react/no-array-index-key': 'off',
     },
     globals: {
         __IS_DEV__: true,
