@@ -3,6 +3,7 @@ import { Counter } from 'entities/Counter';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input/Input';
+import { Page } from 'shared/ui/Page/Page';
 
 const MainPage = () => {
     // В хук useTranslation передаём необязательный перамерт 'main' который указывает на имя файла public/locales/main.json
@@ -18,12 +19,12 @@ const MainPage = () => {
         setValue(val);
     };
     return (
-        <div>
+        <Page>
             <Input onChange={onChange} value={value} placeholder={t('Введите username')} />
             {/* <BugButton /> */}
             {t('Главная страница')}
             {/* <Counter /> */}
-        </div>
+        </Page>
     );
 };
 

@@ -6,11 +6,7 @@ import { RequireAuth } from './RequireAuth';
 
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
-        const element = (
-            // <Suspense fallback={<PageLoader />}>
-            <div className="page-wraper">{route.element}</div>
-            // </Suspense>
-        );
+        const element = <Suspense fallback={<PageLoader />}>{route.element}</Suspense>;
 
         return (
             <Route
@@ -24,9 +20,9 @@ const AppRouter = () => {
     // suspense работает одникого когда мы оборачиваем все роуты и если будем обрачивать каждый элемент
     // каждого роута
     return (
-        <Suspense fallback={<PageLoader />}>
-            <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>
-        </Suspense>
+        // <Suspense fallback={<PageLoader />}>
+        <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>
+        // </Suspense>
     );
 };
 
