@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 
 const AboutPage = () => {
     // В хук useTranslation передаём необязательный перамерт 'about' который указывает на имя файла public/locales/about.json

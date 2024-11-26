@@ -20,8 +20,8 @@ i18n
     // for all options read: https://www.i18next.com/overview/configuration-options
     .init({
         fallbackLng: 'en',
-        // debug: !!__IS_DEV__, // __IS_DEV__ это глобальная переменная созданная в webpack.DefinePlugin
-        debug: false, // на случай если нужно отключить вывод происходящего с i18 в консоль
+        debug: !!__IS_DEV__, // __IS_DEV__ это глобальная переменная созданная в webpack.DefinePlugin
+        // debug: false, // на случай если нужно отключить вывод происходящего с i18 в консоль
 
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
