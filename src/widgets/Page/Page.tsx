@@ -47,7 +47,7 @@ export const Page = memo((props: PageProps) => {
         >
             <div>{children}</div>
             {/* следующий див ничего не содержит он нужен только как тригер. После того как страница бедет проскролена до него будет выслонена загрузка очередной порции данных */}
-            <div ref={triggerRef} />
+            {onScrollEnd ? <div ref={triggerRef} className={cls.trigger} /> : null}
         </section>
     );
 });
