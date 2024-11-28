@@ -1,4 +1,6 @@
-import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
+import {
+    memo, MutableRefObject, ReactNode, UIEvent, useRef,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';

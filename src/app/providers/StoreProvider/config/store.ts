@@ -1,4 +1,6 @@
-import { CombinedState, Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit';
+import {
+    CombinedState, Reducer, ReducersMapObject, configureStore,
+} from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 // раннее в webpack.config для story book в строке config.resolve.modules.unshift(paths.src) использовался метод push и с ним сторибук
 // выкидывал ошибку так как абсолютные импорты не работали для некоторых файлов в том числе для импорта ниже и сторибук начинал искать

@@ -8,7 +8,9 @@ import { fetchCommentsByArticleId } from '../FetchCommentsByArticleId/fetchComme
 export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfig<string>>(
     'articleDetails/addCommentForArticle',
     async (text, thunkApi) => {
-        const { extra, rejectWithValue, dispatch, getState } = thunkApi;
+        const {
+            extra, rejectWithValue, dispatch, getState,
+        } = thunkApi;
 
         const userData = getUserAuthData(getState());
         const article = getArticleDetailsData(getState());
