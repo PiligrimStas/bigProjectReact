@@ -22,7 +22,9 @@ interface ModaLProps {
 const ANIMATION_DELAY = 300;
 
 export const Modal = (props: ModaLProps) => {
-    const { className, children, isOpen, onClose, lazy } = props;
+    const {
+        className, children, isOpen, onClose, lazy,
+    } = props;
 
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);

@@ -10,7 +10,7 @@ export type ReducerList = {
     [name in StateSchemaKey]?: Reducer;
 };
 
-type ReducerLinstEntry = [StateSchemaKey, Reducer];
+// type ReducerLinstEntry = [StateSchemaKey, Reducer];
 
 interface DynamicModuleLoaderProps {
     reducers: ReducerList;
@@ -18,26 +18,32 @@ interface DynamicModuleLoaderProps {
 }
 
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
-    const { children, reducers, removeAfterUnmount } = props;
+    const { children, reducers, removeAfterUnmount = true } = props;
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useDispatch();
 
     useEffect(() => {
+        const mountedReducers = store.reducerManager.getMountedReducers();
+
         Object.entries(reducers).forEach(([name, reducer]) => {
-            // добавляем редюсер при монтировании
-            store.reducerManager.add(name as StateSchemaKey, reducer);
-            // следующая строка нужно только для отслеживания в редакс девтулс
-            dispatch({ type: `@DESTROY ${name} reducer` });
-            // удаляем редюсер при размонтировании
+            const mounted = mountedReducers[name as StateSchemaKey];
+
+            if (!mounted) {
+                // добавляем редюсер при монтировании только если его нет
+                store.reducerManager.add(name as StateSchemaKey, reducer);
+                // следующая строка нужно только для отслеживания в редакс девтулс
+                dispatch({ type: `@INIT ${name} reducer` });
+            }
         });
 
+        // удаляем редюсер при размонтировании
         return () => {
             if (removeAfterUnmount) {
                 Object.entries(reducers).forEach(([name, reducer]) => {
                     // добавляем редюсер при монтировании
                     store.reducerManager.remove(name as StateSchemaKey);
                     // следующая строка нужно только для отслеживания в редакс девтулс
-                    dispatch({ type: `@INIT ${name} reducer` });
+                    dispatch({ type: `@DESTROY ${name} reducer` });
                     // удаляем редюсер при размонтировании
                 });
             }
@@ -45,5 +51,11 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
         // eslint-disable-next-line
     }, []);
 
-    return <> {children};</>;
+    return (
+        <>
+            {' '}
+            {children}
+            {' '}
+        </>
+    );
 };

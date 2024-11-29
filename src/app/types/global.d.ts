@@ -8,6 +8,7 @@ declare module '*.scss' {
     export = classNames;
 }
 
+declare module '*.jpg';
 declare module '*.png';
 declare module '*.gpg';
 declare module '*.gpeg';
@@ -21,9 +22,14 @@ declare module '*.svg' {
 // объясняем TS что из себя представляет переменная из webpack.DefinePlugin
 declare const __IS_DEV__: boolean;
 declare const __API__: string;
+declare const __PROJECT__: 'storybook' | 'frontend' | 'jest';
 // слудующий тип нуженд для заметы того DeepPartial который мы ранее импортировали из redux и из-за него ts выбрасывал слишком много ошибок
 type DeepPartial<T> = T extends object
     ? {
           [P in keyof T]?: DeepPartial<T[P]>;
       }
     : T;
+
+type OptionalRecord<K extends keyof any, T> = {
+    [P in K]?: T;
+};

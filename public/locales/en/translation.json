@@ -8,11 +8,16 @@
     "Обновить страницу": "Refresh page",
     "Главная": "Main",
     "О сайте": "About us",
+    "Профиль": "Profile",
     "выбросисть обибку": "throw error",
     "Войти": "Signin",
     "Введите username": "Type your username",
     "Введите пароль": "Type your password",
     "Форма авторизации": "Authorization form",
     "Вы ввели неверный логин или пароль": "You've typed a woring username of password",
-    "Выйти": "Log out"
+    "Выйти": "Log out",
+    "Статьи": "Articles",
+    "Комментарии отсутвствуют": "There aren't comments",
+    "Какое-то приложение": "Some app",
+    "Создать статью": "Create article"
 }

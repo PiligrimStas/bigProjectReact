@@ -2,12 +2,15 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({
     paths,
     isDev,
     apiUrl,
+    project,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
         // этот плагин встраивает содержимое выходного js файла в выходной файл ./public/index.html а переданный в него tepmplate
@@ -25,10 +28,15 @@ export function buildPlugins({
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
+            __PROJECT__: JSON.stringify(project),
+        }),
+        new CopyPlugin({
+            patterns: [{ from: paths.locales, to: paths.buildLocales }],
         }),
     ];
 
     if (isDev) {
+        plugins.push(new ReactRefreshWebpackPlugin());
         plugins.push(new webpack.HotModuleReplacementPlugin()); // это плагин нужен для того что бы после сохранения изменений в каком либо файле приложения мы могли бы видеть обновления на экране без перезагрузки страницы
         plugins.push(
             new BundleAnalyzerPlugin({

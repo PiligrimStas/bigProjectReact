@@ -32,10 +32,10 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'max-len': ['error', { code: 115, ignoreComments: true }],
+        'max-len': ['error', { code: 116, ignoreComments: true }],
         'i18next/no-literal-string': [
             'error',
-            { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'name'] },
+            { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'name', 'alt', 'target'] },
         ], // указываем что нужно подсвечивать не переведённые тексты только в jsx tsx и не подсвечивать атрибуты
         'jsx-a11y/no-static-element-interactions': 'off', // эта опция нужно что бы линтер не ругался на прменение onclick там гед его симантически быть не должно например на теге див
         'jsx-a11y/click-events-have-key-events': 'off',
@@ -46,10 +46,13 @@ module.exports = {
         // 'function-paren-newline': ['warn', 'multiline'],
         'operator-linebreak': ['error', 'after'],
         'no-undef': 'off',
+        'react/no-array-index-key': 'off',
+        'arrow-body-style': 'off',
     },
     globals: {
         __IS_DEV__: true,
         __API__: true,
+        __PROJECT__: true,
     },
 
     // overrides переобределяет правлина ниже мы переобределям правило 'i18next/no-literal-string' для тестовых файлов

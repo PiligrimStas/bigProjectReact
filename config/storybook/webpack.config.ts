@@ -15,6 +15,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
         html: '',
         entry: '',
         src: path.resolve(__dirname, '..', '..', 'src'),
+        locales: path.resolve(__dirname, 'public', 'locales'), // где брать переводы в prod режиме
+        buildLocales: path.resolve(__dirname, 'build', 'locales'), // куда переместить переводы при prod режиме
     };
     // раннее в строке config.resolve.modules.unshift(paths.src) использовался метод push и с ним сторибук
     // выкидывал ошибку так как абсолютные импорты не работали для некоторых файлов и сторибук начинал искать
@@ -40,6 +42,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
         new DefinePlugin({
             __IS_DEV__: JSON.stringify(true),
             __API__: JSON.stringify(''),
+            __PROJECT__: JSON.stringify('storybook'),
         }),
     );
 

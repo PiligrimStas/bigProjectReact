@@ -1,8 +1,11 @@
 import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 import { buildCssLoader } from './loaders/buildCssLoader';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
-export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
+    const { isDev } = options;
+
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
@@ -13,23 +16,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     // options.plugins а так же в коне компоенета указываем его в babel.plugin.json. Этот плагин должен
     // создавать папку в корне проекта с переводами которые были выполнены во время работа приложения
     // но у меня этой хуй заработала, да и папка это нихуй не нужна (ещё мы насраивали jest для чего вносли изменения в babel.confit, так что возможно babel всёже нужен не только для i18)
-    const babelLoader = {
-        test: /\.(js|jsx|txx)$/, // изменяем регулярку по умолчнаи ( /\.m?js$/ )
-        exclude: /node_modules/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env'],
-                plugins: [
-                    'i18next-extract',
-                    {
-                        locales: ['ru', 'en'],
-                        keyAsDefaultValue: true,
-                    },
-                ],
-            },
-        },
-    };
+    const babelLoader = buildBabelLoader(options);
 
     const cssLoader = buildCssLoader(isDev);
     // если не используем ts нужен babel-loader

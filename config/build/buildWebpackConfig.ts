@@ -15,6 +15,9 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             filename: '[name].[contenthash].js',
             path: paths.build,
             clean: true,
+            // следующая строка нужна только для того что бы в dev режимеработал react-router
+            // со следующем путём  http://localhost:3000/articles/2 без этой строки он бы не зашел на вторую статью
+            publicPath: '/',
         },
         plugins: buildPlugins(options),
         module: {

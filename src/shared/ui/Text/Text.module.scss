@@ -22,6 +22,19 @@
     }
 }
 
+<<<<<<< HEAD
+=======
+.inverted {
+    .title {
+        color: var(--inverted-primary-color);
+    }
+
+    .text {
+        color: var(--inverted-secondary-color);
+    }
+}
+
+>>>>>>> fromFouryOneLesson
 .left {
     text-align: left;
 }
@@ -33,3 +46,30 @@
 .center {
     text-align: center;
 }
+<<<<<<< HEAD
+=======
+
+.sizeM {
+    .title {
+        font-size: var(--font-size-l);
+        line-height: var(--font-line-l);
+    }
+
+    .text {
+        font-size: var(--font-size-m);
+        line-height: var(--font-line-m);
+    }
+}
+
+.sizeL {
+    .title {
+        font-size: var(--font-size-xl);
+        line-height: var(--font-line-xl);
+    }
+
+    .text {
+        font-size: var(--font-size-l);
+        line-height: var(--font-line-l);
+    }
+}
+>>>>>>> fromFouryOneLesson

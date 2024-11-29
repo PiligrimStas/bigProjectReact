@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Page } from 'widgets/Page/Page';
 
 const AboutPage = () => {
     // В хук useTranslation передаём необязательный перамерт 'about' который указывает на имя файла public/locales/about.json
@@ -9,7 +10,7 @@ const AboutPage = () => {
     // и теперь вызов  t('О сайте') будет загружать с сервера файл about.json c переводами только для этой страницы
     const { t } = useTranslation('about');
 
-    return <div>{t('О сайте')}</div>;
+    return <Page>{t('О сайте')}</Page>;
 };
 
 export default AboutPage;
