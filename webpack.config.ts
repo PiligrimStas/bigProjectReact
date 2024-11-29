@@ -15,6 +15,9 @@ export default (env: BuildEnv) => {
         build: path.resolve(__dirname, 'build'),
         html: path.resolve(__dirname, 'public', 'index.html'),
         src: path.resolve(__dirname, 'src'),
+        // что бы работали переводы нужен copy-webpack-plugin
+        locales: path.resolve(__dirname, 'public', 'locales'), // где брать переводы в prod режиме
+        buildLocales: path.resolve(__dirname, 'build', 'locales'), // куда переместить переводы при prod режиме
     };
 
     // весь конфиг вынесли в отдельный файл buildWebpackConfig. Получаем его в результате вызова buildWebpackConfig
