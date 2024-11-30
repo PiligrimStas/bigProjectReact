@@ -7,12 +7,7 @@ export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<st
     async (profileId, thunkApi) => {
         const { extra, rejectWithValue } = thunkApi;
         try {
-<<<<<<< HEAD:src/entities/Profile/model/services/fetchProfileData.ts/fetchProfileDate.ts
-            // throw new Error('asdf ');
-            const response = await extra.api.get<Profile>('/profile');
-=======
             const response = await extra.api.get<Profile>(`/profile/${profileId}`);
->>>>>>> fromFouryOneLesson:src/entities/Profile/model/services/fetchProfileData.ts/fetchProfileData.ts
 
             if (!response.data) {
                 throw new Error();

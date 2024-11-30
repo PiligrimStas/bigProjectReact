@@ -1,12 +1,4 @@
 import { useTranslation } from 'react-i18next';
-<<<<<<< HEAD
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Input } from 'shared/ui/Input/Input';
-import { Loader } from 'shared/ui/Loader/Loader';
-import { Profile } from '../../model/types/profile';
-=======
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
@@ -15,20 +7,11 @@ import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Atatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
->>>>>>> fromFouryOneLesson
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
     className?: string;
     data?: Profile;
-<<<<<<< HEAD
-    isLoading?: boolean;
-    error?: string;
-}
-
-export const ProfileCard = (props: ProfileCardProps) => {
-    const { className, data, isLoading, error } = props;
-=======
     error?: string;
     isLoading?: boolean;
     readonly?: boolean;
@@ -58,7 +41,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeCurrency,
         onChangeCountry,
     } = props;
->>>>>>> fromFouryOneLesson
     const { t } = useTranslation('profile');
 
     if (isLoading) {
@@ -75,23 +57,16 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 <Text
                     theme={TextTheme.ERROR}
                     title={t('Произошла ошибка при загрузке профиля')}
-<<<<<<< HEAD
-                    text={t('Попробуйте обновить страницу')}
-=======
                     text={t('Попробуйте обновить странцу')}
->>>>>>> fromFouryOneLesson
                     align={TextAlign.CENTER}
                 />
             </div>
         );
     }
-<<<<<<< HEAD
-=======
 
     const mods: Mods = {
         [cls.editing]: !readonly,
     };
->>>>>>> fromFouryOneLesson
 
     return (
         <div className={classNames(cls.profileCard, mods, [className])}>

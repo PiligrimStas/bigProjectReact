@@ -7,16 +7,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import {
     ProfileCard,
     fetchProfileData,
-<<<<<<< HEAD
-    getProfileData,
-    getProfileError,
-    getProfileIsLoading,
-    profileReducer,
-} from 'entities/Profile';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-=======
     getProfileError,
     getProfileForm,
     getProfileIsLoading,
@@ -36,7 +26,6 @@ import { ValidateProfileError } from 'entities/Profile/model/types/profile';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Page } from 'widgets/Page/Page';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
->>>>>>> fromFouryOneLesson
 
 const reducers: ReducerList = {
     profile: profileReducer,
@@ -49,18 +38,12 @@ interface ProfilePageProps {
 const Profile = ({ className }: ProfilePageProps) => {
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
-<<<<<<< HEAD
-    const data = useSelector(getProfileData);
-    const isLoading = useSelector(getProfileIsLoading);
-    const error = useSelector(getProfileError);
-=======
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
     const validateErrors = useSelector(getProfileValidateErrors);
     const { id } = useParams<{ id: string }>();
->>>>>>> fromFouryOneLesson
 
     const validateErrorTranslates = {
         [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
@@ -132,11 +115,6 @@ const Profile = ({ className }: ProfilePageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-<<<<<<< HEAD
-            <div className={classNames('', {}, [className])}>
-                <ProfileCard data={data} isLoading={isLoading} error={error} />
-            </div>
-=======
             <Page className={classNames('', {}, [className])}>
                 <ProfilePageHeader />
                 {validateErrors?.length &&
@@ -162,7 +140,6 @@ const Profile = ({ className }: ProfilePageProps) => {
                     onChangeCountry={onChangeCountry}
                 />
             </Page>
->>>>>>> fromFouryOneLesson
         </DynamicModuleLoader>
     );
 };

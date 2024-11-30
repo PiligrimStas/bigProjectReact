@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-export { getProfileData } from './model/selectors/getProfileData/getProfileData';
-export { getProfileError } from './model/selectors/getProfileError/getProfileError';
-export { getProfileIsLoading } from './model/selectors/getProfileIsLoading/getProfileIsLoading';
-export { Profile, ProfileSchema } from './model/types/profile';
-=======
 export { Profile, ProfileSchema, ValidateProfileError } from './model/types/profile';
->>>>>>> fromFouryOneLesson
 export { profileActions, profileReducer } from './model/slice/profileSlice';
 export { fetchProfileData } from './model/services/fetchProfileData.ts/fetchProfileData';
 export { updateProfileData } from './model/services/updateProfileData/updateProfileData';
