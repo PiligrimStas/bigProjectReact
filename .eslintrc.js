@@ -35,7 +35,20 @@ module.exports = {
         'max-len': ['error', { code: 116, ignoreComments: true }],
         'i18next/no-literal-string': [
             'error',
-            { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'name', 'alt', 'target'] },
+            {
+                markupOnly: true,
+                ignoreAttribute: [
+                    'data-testid',
+                    'to',
+                    'name',
+                    'alt',
+                    'target',
+                    'direction',
+                    'align',
+                    'justify',
+                    'gap',
+                ],
+            },
         ], // указываем что нужно подсвечивать не переведённые тексты только в jsx tsx и не подсвечивать атрибуты
         'jsx-a11y/no-static-element-interactions': 'off', // эта опция нужно что бы линтер не ругался на прменение onclick там гед его симантически быть не должно например на теге див
         'jsx-a11y/click-events-have-key-events': 'off',
