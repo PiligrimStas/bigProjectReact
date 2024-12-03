@@ -1,8 +1,8 @@
-import { BugButton } from 'app/providers/ErrorBoundary';
-import { Counter } from 'entities/Counter';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input/Input';
+import { ListBox } from 'shared/ui/ListBox/ListBox';
+import { HStack } from 'shared/ui/Stack';
 import { Page } from 'widgets/Page/Page';
 
 const MainPage = () => {
@@ -21,9 +21,28 @@ const MainPage = () => {
     return (
         <Page>
             <Input onChange={onChange} value={value} placeholder={t('Введите username')} />
-            {/* <BugButton /> */}
             {t('Главная страница')}
-            {/* <Counter /> */}
+            <div>
+                <HStack>
+                    <div>asdfasdf</div>
+                    <ListBox
+                        defaultValue="выберите значение"
+                        onChange={(value: string) => {}}
+                        value={' '}
+                        items={[
+                            { value: '1', content: '1234' },
+                            { value: '1', content: '1234', disabled: true },
+                            { value: '1', content: '1234' },
+                        ]}
+                    />
+                </HStack>
+                <div>asdfasdf</div>
+                <div>asdfasdf</div>
+                <div>asdfasdf</div>
+                <div>asdfasdf</div>
+                <div>asdfasdf</div>
+                <div>asdfasdf</div>
+            </div>
         </Page>
     );
 };

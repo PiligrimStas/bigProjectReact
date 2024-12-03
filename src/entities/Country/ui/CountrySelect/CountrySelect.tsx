@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Select } from 'shared/ui/Select/Select';
 import { memo, useCallback } from 'react';
 import { Country } from '../../model/types/country';
+import { ListBox } from 'shared/ui/ListBox/ListBox';
 
 interface CountrySelectProps {
     className?: string;
@@ -20,9 +21,7 @@ const options = [
 ];
 
 export const CountrySelect = memo(
-    ({
-        className, value, onChange, readonly,
-    }: CountrySelectProps) => {
+    ({ className, value, onChange, readonly }: CountrySelectProps) => {
         const { t } = useTranslation('profile');
 
         const onChangeHandler = useCallback(
@@ -33,14 +32,26 @@ export const CountrySelect = memo(
         );
 
         return (
-            <Select
-                className={classNames('', {}, [className])}
-                label={t('Выберите страну')}
-                options={options}
-                value={value}
+            <ListBox
                 onChange={onChangeHandler}
+                value={value as Country}
+                defaultValue={t('Укажите страну')}
+                label={t('Укажите страну')}
+                items={options}
                 readonly={readonly}
+                direction="top"
             />
+
+            // вместо нашего кастомного селекта добавлям listbox из сторонней библиотеки
+
+            // <Select
+            //     className={classNames('', {}, [className])}
+            //     label={t('Выберите страну')}
+            //     options={options}
+            //     value={value}
+            //     onChange={onChangeHandler}
+            //     readonly={readonly}
+            // />
         );
     },
 );
