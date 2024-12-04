@@ -39,7 +39,7 @@ export const CountrySelect = memo(
                 label={t('Укажите страну')}
                 items={options}
                 readonly={readonly}
-                direction="top"
+                direction="top right"
             />
 
             // вместо нашего кастомного селекта добавлям listbox из сторонней библиотеки

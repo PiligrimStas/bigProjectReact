@@ -38,7 +38,7 @@ export const CurrencySelect = memo(
                 defaultValue={t('Выберите валюту')}
                 items={options}
                 readonly={readonly}
-                direction="top"
+                direction="top right"
             />
 
             // теперь вместо нашего селекта мы использгуем компонен из сторонней библиотеки
