@@ -8,10 +8,10 @@ import {
 import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from 'entities/Article';
 import { CounterSchema } from 'entities/Counter';
-import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { LoginScheme } from 'features/AuthByUserName';
+import { ProfileSchema } from 'features/editableProfileCard';
 import { UISchema } from 'features/UI';
 import {
     ArticleDetailsCommentsSchema,
@@ -20,11 +20,13 @@ import {
 } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { NavigateOptions, To } from 'react-router-dom';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
     ui: UISchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     // асинхронные редюсеры
     loginForm?: LoginScheme;

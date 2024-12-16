@@ -20,5 +20,6 @@
     "дате создания": "creation date",
     "количеству просморов": "number of views",
     "Рекомендации": "Recomendations",
-    "Редактировать": "Edit"
+    "Редактировать": "Edit",
+    "Ошибка при загрузке статей": "Error loading articles"
 }

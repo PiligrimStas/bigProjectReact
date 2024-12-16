@@ -13,7 +13,7 @@ interface ArticleListProps {
     className?: string;
     articles: Article[];
     isLoading?: boolean;
-    view: ArticleView;
+    view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
 }
 
@@ -23,7 +23,7 @@ const getSkeletons = (view: ArticleView) =>
         .map((_, index) => <ArticleListItemSkeleton key={index} view={view} />);
 
 export const ArticleList = memo((props: ArticleListProps) => {
-    const { className, articles, isLoading, view, target } = props;
+    const { className, articles, isLoading, view = ArticleView.SMALL, target } = props;
     const { t } = useTranslation('article-details');
     const isBig = view === ArticleView.BIG;
     const itemsPerRow = isBig ? 1 : 3;

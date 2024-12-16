@@ -1,6 +1,4 @@
-import {
-    CombinedState, Reducer, ReducersMapObject, configureStore,
-} from '@reduxjs/toolkit';
+import { CombinedState, Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 // раннее в webpack.config для story book в строке config.resolve.modules.unshift(paths.src) использовался метод push и с ним сторибук
 // выкидывал ошибку так как абсолютные импорты не работали для некоторых файлов в том числе для импорта ниже и сторибук начинал искать
@@ -9,6 +7,7 @@ import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 // import { NavigateOptions, To } from 'react-router-dom';
 import { $api } from 'shared/api/api';
+import { rtkApi } from 'shared/api/rtkApi';
 import { uiReducer } from 'features/UI';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
@@ -24,6 +23,7 @@ export function createReduxStore(
         counter: counterReducer,
         user: userReducer,
         ui: uiReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
 
         // закоментироуум loginReducer так как теперь это асинхронные редюсрер
         // loginForm: loginReducer,
@@ -41,7 +41,7 @@ export function createReduxStore(
         devTools: __IS_DEV__,
         preloadedState: initialState,
         middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware({ thunk: { extraArgument: extraArg } }),
+            getDefaultMiddleware({ thunk: { extraArgument: extraArg } }).concat(rtkApi.middleware),
     });
     // @ts-ignore
     store.reducerManager = reducerManager;
