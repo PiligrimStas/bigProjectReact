@@ -7,8 +7,8 @@ import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Atatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
-import cls from './ProfileCard.module.scss';
 import { HStack, VStack } from 'shared/ui/Stack';
+import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
     className?: string;
@@ -89,12 +89,14 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 placeholder={t('Ваше имя')}
                 onChange={onChangeFirstname}
                 readonly={readonly}
+                data-testid="ProfileCard.firstname"
             />
             <Input
                 value={data?.lastName}
                 placeholder={t('Ваша фамилия')}
                 onChange={onChangeLastname}
                 readonly={readonly}
+                data-testid="ProfileCard.lastname"
             />
             <Input
                 value={data?.age}

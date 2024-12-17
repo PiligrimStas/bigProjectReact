@@ -21,7 +21,6 @@ import { getProfileError } from '../../model/selectors/getProfileError/getProfil
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { fetchProfileData } from '../../model/services/fetchProfileData.ts/fetchProfileData';
 import { ValidateProfileError } from '../../model/types/editableProfileCardSchema';
-import cls from './EditableProfileCard.module.scss';
 import { EditableProfileCardHeader } from '../EditalbeProfileCardHeader/EditableProfileCardHeader';
 
 interface EditableProfileCardProps {
@@ -121,6 +120,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                             theme={TextTheme.ERROR}
                             text={validateErrorTranslates[err]}
                             key={err}
+                            data-testid="EditableProfileCard.Error"
                         />
                     ))}
                 <ProfileCard
