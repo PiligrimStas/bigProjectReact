@@ -12,6 +12,7 @@ import {
     DynamicModuleLoader,
     ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { VStack } from 'shared/ui/Stack';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
@@ -22,7 +23,6 @@ import { fetchProfileData } from '../../model/services/fetchProfileData.ts/fetch
 import { ValidateProfileError } from '../../model/types/editableProfileCardSchema';
 import cls from './EditableProfileCard.module.scss';
 import { EditableProfileCardHeader } from '../EditalbeProfileCardHeader/EditableProfileCardHeader';
-import { VStack } from 'shared/ui/Stack';
 
 interface EditableProfileCardProps {
     className?: string;
@@ -113,7 +113,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <VStack gap="8" max className={classNames(cls.editableProfileCard, {}, [className])}>
+            <VStack gap="8" max className={classNames('', {}, [className])}>
                 <EditableProfileCardHeader />
                 {validateErrors?.length &&
                     validateErrors.map((err) => (
