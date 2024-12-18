@@ -4,9 +4,9 @@ import { Profile } from 'entities/Profile';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import userEvent from '@testing-library/user-event';
+import { $api } from 'shared/api/api';
 import { EditableProfileCard } from './EditableProfileCard';
 import { profileReducer } from '../../model/slice/profileSlice';
-import { $api } from 'shared/api/api';
 
 const profile: Profile = {
     id: '1',
